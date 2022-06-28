@@ -30,14 +30,14 @@ const AddItems = () => {
   };
   return (
     <div>
-      <h1>AddItems</h1>
-      <form onSubmit={handleSubmit}>
+      <h1 className="text-3xl text-center font-bold">Add Items</h1>
+      <form onSubmit={handleSubmit} className="w-1/3 mx-auto">
         <div>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Name</label> <br />
           <input
             type="text"
             name="name"
-            className="border-2 rounded-xl w-1/3 p-2 m-2"
+            className="border-2 rounded-xl w-full p-2 mb-2"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -45,10 +45,11 @@ const AddItems = () => {
         </div>
         <div>
           <label htmlFor="description">Description</label>
+          <br />
           <input
             type="text"
             name="description"
-            className="border-2 rounded-xl w-1/3 p-2 m-2"
+            className="border-2 rounded-xl w-full p-2 mb-2"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
@@ -56,10 +57,11 @@ const AddItems = () => {
         </div>
         <div>
           <label htmlFor="ram">RAM</label>
+          <br />
           <input
             type="text"
             name="ram"
-            className="border-2 rounded-xl w-1/3 p-2 m-2"
+            className="border-2 rounded-xl w-full p-2 mb-2"
             value={ram}
             onChange={(e) => setRam(e.target.value)}
             required
@@ -67,10 +69,11 @@ const AddItems = () => {
         </div>
         <div>
           <label htmlFor="internalStorage">Internal Storage</label>
+          <br />
           <input
             type="text"
             name="internalStorage"
-            className="border-2 rounded-xl w-1/3 p-2 m-2"
+            className="border-2 rounded-xl w-full p-2 mb-2"
             value={internalStorage}
             onChange={(e) => setInternalStorage(e.target.value)}
             required
@@ -78,16 +81,17 @@ const AddItems = () => {
         </div>
         <div>
           <label htmlFor="screenSize">Screen Size</label>
+          <br />
           <input
             type="text"
             name="screenSize"
-            className="border-2 rounded-xl w-1/3 p-2 m-2"
+            className="border-2 rounded-xl w-full p-2 mb-2"
             value={screenSize}
             onChange={(e) => setScreenSize(e.target.value)}
             required
           />
         </div>
-        <input type="submit" value="Add Item" className="btn btn-md" />
+        <input type="submit" value="Add Item" className="btn btn-md my-2 font-bold" />
       </form>
     </div>
   );

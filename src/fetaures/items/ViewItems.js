@@ -1,10 +1,11 @@
+import { AiFillEdit } from "react-icons/ai";
+import { MdDeleteForever } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux/es/exports";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { deleteMobiles } from "./ItemsSlice";
 
 const ViewItems = () => {
-    const navigate=useNavigate()
   const mobiles = useSelector((state) => state.mobileReducer.mobiles);
   const dispatch = useDispatch();
   const handleDelete = (id) => {
@@ -19,7 +20,9 @@ const ViewItems = () => {
               <th>NO</th>
               <th>Brand Name</th>
               <th>RAM</th>
-              <th>Action</th>
+              <th>Details</th>
+              <th>Edit</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -40,27 +43,6 @@ const ViewItems = () => {
                     <td>{RAM}</td>
                     <td>
                       <Link
-                        to="/editItems"
-                        state={{
-                          id,
-                          brandName,
-                          RAM,
-                          description,
-                          internalStorage,
-                          screenSize,
-                        }}
-                      >
-                        <button className="btn btn-xs mx-2">Edit</button>
-                      </Link>
-                      <button
-                        onClick={() => {
-                          handleDelete(id);
-                        }}
-                        className="btn btn-xs mx-2"
-                      >
-                        Delete
-                      </button>
-                      <Link
                         to="/itemDetail"
                         state={{
                           id,
@@ -73,6 +55,34 @@ const ViewItems = () => {
                       >
                         <button className="btn btn-xs mx-2">Details</button>
                       </Link>
+                    </td>
+                    <td>
+                      <Link
+                        to="/editItems"
+                        state={{
+                          id,
+                          brandName,
+                          RAM,
+                          description,
+                          internalStorage,
+                          screenSize,
+                        }}
+                      >
+                        <button className="text-2xl text-blue-500">
+                          <AiFillEdit />
+                        </button>
+                      </Link>
+                    </td>
+
+                    <td>
+                      <button
+                        onClick={() => {
+                          handleDelete(id);
+                        }}
+                        className="text-2xl text-red-600"
+                      >
+                        <MdDeleteForever />
+                      </button>
                     </td>
                   </tr>
                 );

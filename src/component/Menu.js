@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 const Menu = () => {
   return (
     <div class="navbar bg-base-100">
@@ -36,15 +36,18 @@ const Menu = () => {
           The Mango Jelly
         </Link>
       </div>
-      <div class="navbar-end hidden lg:flex">
+      <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0">
           <li>
-            <Link to="/">Home</Link>
+            <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <Link to="/addItems">Add Item</Link>
+            <NavLink to="/addItems">Add Item</NavLink>
           </li>
         </ul>
+      </div>
+      <div class="navbar-end">
+        <Link to='/' class="btn">Gallery</Link>
       </div>
     </div>
   );
