@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { MdDeleteForever } from "react-icons/md";
 import { useSelector } from "react-redux";
@@ -7,12 +8,33 @@ import { deleteMobiles } from "./ItemsSlice";
 
 const ViewItems = () => {
   const mobiles = useSelector((state) => state.mobileReducer.mobiles);
+  const [searchMobile, setSearchMobile] = useState(mobiles);
   const dispatch = useDispatch();
   const handleDelete = (id) => {
     dispatch(deleteMobiles(id));
   };
+  const handleSubmit=(e)=>{
+e.preventDefault()
+const name=e.target.name.value
+const searchMobile = mobiles.filter((mobile) => mobile.brandName.includes(name));
+setSearchMobile(searchMobile);
+  }
   return (
     <div>
+      <form onSubmit={handleSubmit} className="text-center">
+        <input
+          type="text"
+          name="name"
+          placeholder="Search Your phone with brand name"
+          className="border-2 rounded-md p-2 m-2 w-1/3"
+        />
+        <input
+          type="submit"
+          value="Search"
+          className="border-2 rounded-md py-2 m-2 px-3 bg-slate-700 text-white font-bold"
+        />
+      </form>
+
       <div class="overflow-x-auto">
         <table class="table w-full text-center">
           <thead>
@@ -27,7 +49,7 @@ const ViewItems = () => {
           </thead>
           <tbody>
             {mobiles &&
-              mobiles.map((mobile, index) => {
+              searchMobile.map((mobile, index) => {
                 const {
                   id,
                   brandName,

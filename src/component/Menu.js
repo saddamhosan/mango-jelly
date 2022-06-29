@@ -39,15 +39,21 @@ const Menu = () => {
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal p-0">
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink className="font-bold" to="/">
+              Home
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/addItems">Add Item</NavLink>
+            <NavLink className="font-bold" to="/addItems">
+              Add Item
+            </NavLink>
           </li>
         </ul>
       </div>
       <div class="navbar-end">
-        <Link to='/' class="btn">Gallery</Link>
+        <Link to="/" class="btn font-bold">
+          Gallery View
+        </Link>
       </div>
     </div>
   );
