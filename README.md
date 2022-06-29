@@ -1,6 +1,6 @@
-# This project [Live Link](https://the-mango-jelly.netlify.app/).
+# The Mango Jelly [Live Link](https://the-mango-jelly.netlify.app/).
 
-# Use packages & library on this project
+## Use packages & library on this project
 
 - react
 - tailwind
@@ -11,7 +11,7 @@
 - uuid
 - Netlify
 
-# functionality
+## functionality
 
 - Add new mobile
 - Search mobile using brand name
