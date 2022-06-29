@@ -53,7 +53,10 @@ const initialMobile = {
         },
         deleteMobiles:(state, action)=> {
             const id=action.payload
+            console.log(id);
+            
            state.mobiles= state.mobiles.filter(mobile=>mobile.id !== id)
+           console.log(state.mobiles);
         }
     },
 })

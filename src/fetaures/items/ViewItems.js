@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { MdDeleteForever } from "react-icons/md";
 import { useSelector } from "react-redux";
@@ -7,18 +7,26 @@ import { Link } from "react-router-dom";
 import { deleteMobiles } from "./ItemsSlice";
 
 const ViewItems = () => {
+  const [searchMobile, setSearchMobile] = useState([]);
   const mobiles = useSelector((state) => state.mobileReducer.mobiles);
-  const [searchMobile, setSearchMobile] = useState(mobiles);
+  useEffect(() => {
+    setSearchMobile(mobiles);
+  }, [mobiles]);
   const dispatch = useDispatch();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const searchMobile = mobiles.filter((mobile) =>
+      mobile.brandName.includes(name)
+    );
+    setSearchMobile(searchMobile);
+  };
+
   const handleDelete = (id) => {
     dispatch(deleteMobiles(id));
   };
-  const handleSubmit=(e)=>{
-e.preventDefault()
-const name=e.target.name.value
-const searchMobile = mobiles.filter((mobile) => mobile.brandName.includes(name));
-setSearchMobile(searchMobile);
-  }
+
   return (
     <div>
       <form onSubmit={handleSubmit} className="text-center">
@@ -59,7 +67,7 @@ setSearchMobile(searchMobile);
                   screenSize,
                 } = mobile;
                 return (
-                  <tr>
+                  <tr key={id}>
                     <th>{index + 1}</th>
                     <td>{brandName}</td>
                     <td>{RAM}</td>
